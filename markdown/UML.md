@@ -49,7 +49,7 @@ public:
 
 А это его UML-диаграмма:
 
-```cpp
+```mermaid
 classDiagram
     Calculator <|-- ScientificCalculator
     class Calculator{

@@ -605,15 +605,17 @@ UML:
 ```mermaid
 classDiagram
     Handler <|-- AbstractHandler
-    AbstractHandler <|-- MonkeyHandler
-    AbstractHandler <|-- SquirrelHandler
-    AbstractHandler <|-- DogHandler
+    Handler <|-- MonkeyHandler
+    Handler <|-- SquirrelHandler
+    Handler <|-- DogHandler
     Handler : +SetNext(Handler)
-    Handler : +Handle(string):string
-    AbstractHandler : +Handle(string):string
-    MonkeyHandler : +Handle(string):string
-    SquirrelHandler : +Handle(string):string
-    DogHandler : +Handle(string):string
+    Handler : +Handle(string) : string
+    AbstractHandler : +next_handler : Handler
+    AbstractHandler : +SetNext(Handler)
+    AbstractHandler : +Handle(string) : string
+    MonkeyHandler : +Handle(string) : string
+    SquirrelHandler : +Handle(string) : string
+    DogHandler : +Handle(string) : string
 ```
 
 Результат:
@@ -718,20 +720,6 @@ int main() {
 }
 ```
 
-UML:
-
-```mermaid
-classDiagram
-    Command <|-- SimpleCommand
-    Command <|-- ComplexCommand
-    Command : +Execute()
-    SimpleCommand : +Execute()
-    ComplexCommand : +Execute()
-    Invoker : +DoSomethingImportant()
-    Receiver : +DoSomething(string)
-    Receiver : +DoSomethingElse(string)
-```
-
 Результат:
 
 ```txt
@@ -824,27 +812,6 @@ int main() {
     }
     return 0;
 }
-```
-
-UML:
-
-```mermaid
-classDiagram
-    Iterator <|-- WordsIterator
-    Iterator {
-        +First()
-        +Next()
-        +IsDone()
-        +CurrentItem()
-    }
-    WordsIterator {
-        +First()
-        +Next()
-        +IsDone()
-        +CurrentItem()
-    }
-    Sentence : +CreateIterator()
-    Sentence : +GetWords()
 ```
 
 Результат:
@@ -943,30 +910,6 @@ int main() {
     c2->DoD();
     return 0;
 }
-```
-
-UML:
-
-```mermaid
-classDiagram
-    Component <|-- ConcreteComponent1
-    Component <|-- ConcreteComponent2
-    Component : -mediator_: Mediator
-    Component : +SetMediator(mediator: Mediator)
-    Mediator <|-- ConcreteMediator
-    Mediator : +Notify(sender: Component, event: string)
-    ConcreteComponent1 {
-        +DoA()
-        +DoB()
-    }
-    ConcreteComponent2 {
-        +DoC()
-        +DoD()
-    }
-    ConcreteMediator {
-        +ConcreteMediator(c1: ConcreteComponent1, c2: ConcreteComponent2)
-        +Notify(sender: Component, event: string)
-    }
 ```
 
 ## Пораждающие паттерны
@@ -1085,45 +1028,6 @@ int main() {
     delete f2;
     return 0;
 }
-```
-
-UML:
-
-```mermaid
-classDiagram
-    AbstractFactory <|-- ConcreteFactory1
-    AbstractFactory <|-- ConcreteFactory2
-    AbstractFactory : +CreateProductA()
-    AbstractFactory : +CreateProductB()
-    ProductA <|-- ConcreteProductA1
-    ProductA <|-- ConcreteProductA2
-    ProductA : +UsefulFunctionA()
-    ProductB <|-- ConcreteProductB1
-    ProductB <|-- ConcreteProductB2
-    ProductB : +UsefulFunctionB()
-    ProductB : +AnotherUsefulFunctionB(collaborator: ProductA)
-    ConcreteFactory1 {
-        +CreateProductA()
-        +CreateProductB()
-    }
-    ConcreteFactory2 {
-        +CreateProductA()
-        +CreateProductB()
-    }
-    ConcreteProductA1 {
-        +UsefulFunctionA()
-    }
-    ConcreteProductA2 {
-        +UsefulFunctionA()
-    }
-    ConcreteProductB1 {
-        +UsefulFunctionB()
-        +AnotherUsefulFunctionB(collaborator: ProductA)
-    }
-    ConcreteProductB2 {
-        +UsefulFunctionB()
-        +AnotherUsefulFunctionB(collaborator: ProductA)
-    }
 ```
 
 ### Строитель
@@ -1268,34 +1172,6 @@ int main() {
 }
 ```
 
-UML:
-
-```mermaid
-classDiagram
-    Builder <|-- ConcreteBuilder1
-    Builder <|-- ConcreteBuilder2
-    Builder : +ProducePartA()
-    Builder : +ProducePartB()
-    Builder : +ProducePartC()
-    Director : +set_builder(builder: Builder)
-    Director : +BuildMinimalViableProduct()
-    Director : +BuildFullFeaturedProduct()
-    Product : +ListParts()
-    Product : +Add(part: string)
-    ConcreteBuilder1 {
-        +ProducePartA()
-        +ProducePartB()
-        +ProducePartC()
-        +GetProduct()
-    }
-    ConcreteBuilder2 {
-        +ProducePartA()
-        +ProducePartB()
-        +ProducePartC()
-        +GetProduct()
-    }
-```
-
 ### Фабричный метод
 
 Фабричный метод - это порождающий паттерн проектирования, который определяет общий интерфейс для создания объектов в суперклассе, позволяя подклассам изменять тип создаваемых объектов.
@@ -1372,23 +1248,6 @@ int main() {
 }
 ```
 
-UML:
-
-```mermaid
-classDiagram
-    Creator <|-- ConcreteCreator1
-    Creator <|-- ConcreteCreator2
-    Creator : +FactoryMethod()
-    Creator : +SomeOperation()
-    Product : +Operation()
-    ConcreteCreator1 {
-        +FactoryMethod()
-    }
-    ConcreteCreator2 {
-        +FactoryMethod()
-    }
-```
-
 ### Прототип
 
 Прототип - это порождающий паттерн проектирования, который позволяет копировать объекты, не вдаваясь в подробности их реализации.
@@ -1462,24 +1321,6 @@ int main() {
 }
 ```
 
-UML:
-
-```mermaid
-classDiagram
-    Prototype <|-- ConcretePrototype1
-    Prototype <|-- ConcretePrototype2
-    Prototype : +Clone()
-    Prototype : +Method()
-    ConcretePrototype1 {
-        +Clone()
-        +Method()
-    }
-    ConcretePrototype2 {
-        +Clone()
-        +Method()
-    }
-```
-
 ### Одиночка
 
 Одиночка - это порождающий паттерн проектирования, который гарантирует, что у класса есть только один экземпляр, и предоставляет к нему глобальную точку доступа.
@@ -1538,18 +1379,6 @@ int main() {
     t2.join();
     return 0;
 }
-```
-
-UML:
-
-```mermaid
-classDiagram
-    Singleton : +Get()
-    Singleton : +SomeBusinessLogic()
-    Singleton {
-        +Get()
-        +SomeBusinessLogic()
-    }
 ```
 
 ## Ссылки

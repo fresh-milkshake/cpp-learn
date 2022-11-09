@@ -5,7 +5,7 @@ from typing import Dict, Tuple
 
 import rich
 from fuzzywuzzy import fuzz
-from rich import table, panel
+from rich import panel, table
 from tqdm import tqdm
 
 logging.basicConfig(level=logging.CRITICAL)

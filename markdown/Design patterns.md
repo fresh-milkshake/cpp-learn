@@ -605,17 +605,17 @@ UML:
 ```mermaid
 classDiagram
     Handler <|-- AbstractHandler
-    Handler <|-- MonkeyHandler
-    Handler <|-- SquirrelHandler
-    Handler <|-- DogHandler
+    AbstractHandler <|-- MonkeyHandler
+    AbstractHandler <|-- SquirrelHandler
+    AbstractHandler <|-- DogHandler
     Handler : +SetNext(Handler)
-    Handler : +Handle(string) : string
-    AbstractHandler : +next_handler : Handler
+    Handler : +Handle(string)
+    AbstractHandler : +Handler nextHandler
     AbstractHandler : +SetNext(Handler)
-    AbstractHandler : +Handle(string) : string
-    MonkeyHandler : +Handle(string) : string
-    SquirrelHandler : +Handle(string) : string
-    DogHandler : +Handle(string) : string
+    AbstractHandler : +Handle(String)
+    MonkeyHandler : +Handle(String)
+    SquirrelHandler : +Handle(String)
+    DogHandler : +Handle(String)
 ```
 
 Результат:
@@ -720,6 +720,19 @@ int main() {
 }
 ```
 
+UML:
+
+```mermaid
+classDiagram
+    Command <|-- SimpleCommand
+    Command <|-- ComplexCommand
+    Command <|-- Invoker
+    Command : +Execute()
+    SimpleCommand : +Execute()
+    ComplexCommand : +Execute()
+    Invoker : +DoSomethingImportant()
+```
+
 Результат:
 
 ```txt
@@ -812,6 +825,24 @@ int main() {
     }
     return 0;
 }
+```
+
+UML:
+
+```mermaid
+classDiagram
+    Iterator <|-- WordsIterator
+    Sentence <|-- Iterator
+    Iterator : +First()
+    Iterator : +Next()
+    Iterator : +IsDone()
+    Iterator : +CurrentItem()
+    WordsIterator : +First()
+    WordsIterator : +Next()
+    WordsIterator : +IsDone()
+    WordsIterator : +CurrentItem()
+    Sentence : +CreateIterator()
+    Sentence : +GetWords()
 ```
 
 Результат:
@@ -910,6 +941,21 @@ int main() {
     c2->DoD();
     return 0;
 }
+```
+
+UML:
+
+```mermaid
+classDiagram
+    Component <|-- ConcreteComponent1
+    Component <|-- ConcreteComponent2
+    Mediator <|-- ConcreteMediator
+    Component : +SetMediator()
+    ConcreteComponent1 : +DoA()
+    ConcreteComponent1 : +DoB()
+    ConcreteComponent2 : +DoC()
+    ConcreteComponent2 : +DoD()
+    ConcreteMediator : +Notify()
 ```
 
 ## Пораждающие паттерны
@@ -1028,6 +1074,23 @@ int main() {
     delete f2;
     return 0;
 }
+```
+
+UML:
+
+```mermaid
+classDiagram
+    AbstractFactory <|-- ConcreteFactory1
+    AbstractFactory <|-- ConcreteFactory2
+    AbstractFactory : +CreateProductA()
+    AbstractFactory : +CreateProductB()
+    ProductA <|-- ConcreteProductA1
+    ProductA <|-- ConcreteProductA2
+    ProductB <|-- ConcreteProductB1
+    ProductB <|-- ConcreteProductB2
+    ProductA : +UsefulFunctionA()
+    ProductB : +UsefulFunctionB()
+    ProductB : +AnotherUsefulFunctionB()
 ```
 
 ### Строитель
@@ -1172,6 +1235,25 @@ int main() {
 }
 ```
 
+UML:
+
+```mermaid
+classDiagram
+    Builder <|-- ConcreteBuilder1
+    Builder <|-- ConcreteBuilder2
+    Product <|-- ConcreteProduct1
+    Product <|-- ConcreteProduct2
+    Director <|-- ConcreteDirector
+    Builder : +ProducePartA()
+    Builder : +ProducePartB()
+    Builder : +ProducePartC()
+    Director : +set_builder()
+    Director : +BuildMinimalViableProduct()
+    Director : +BuildFullFeaturedProduct()
+    Product : +ListParts()
+    Product : +Add()
+```
+
 ### Фабричный метод
 
 Фабричный метод - это порождающий паттерн проектирования, который определяет общий интерфейс для создания объектов в суперклассе, позволяя подклассам изменять тип создаваемых объектов.
@@ -1248,6 +1330,19 @@ int main() {
 }
 ```
 
+UML:
+
+```mermaid
+classDiagram
+    Creator <|-- ConcreteCreator1
+    Creator <|-- ConcreteCreator2
+    Product <|-- ConcreteProduct1
+    Product <|-- ConcreteProduct2
+    Creator : +FactoryMethod()
+    Creator : +SomeOperation()
+```
+
+
 ### Прототип
 
 Прототип - это порождающий паттерн проектирования, который позволяет копировать объекты, не вдаваясь в подробности их реализации.
@@ -1321,6 +1416,16 @@ int main() {
 }
 ```
 
+UML:
+
+```mermaid
+classDiagram
+    Prototype <|-- ConcretePrototype1
+    Prototype <|-- ConcretePrototype2
+    Prototype : +Clone()
+    Prototype : +Method()
+```
+
 ### Одиночка
 
 Одиночка - это порождающий паттерн проектирования, который гарантирует, что у класса есть только один экземпляр, и предоставляет к нему глобальную точку доступа.
@@ -1379,6 +1484,15 @@ int main() {
     t2.join();
     return 0;
 }
+```
+
+UML:
+
+```mermaid
+classDiagram
+    Singleton <|-- Singleton
+    Singleton : +GetInstance()
+    Singleton : +SomeBusinessLogic()
 ```
 
 ## Ссылки

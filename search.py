@@ -1,13 +1,12 @@
-from collections import defaultdict
-from typing import Dict, List, Tuple
+import logging
 import os
 import string
+from typing import Dict, Tuple
 
 import rich
-from rich import table
+from fuzzywuzzy import fuzz
+from rich import table, panel
 from tqdm import tqdm
-from fuzzywuzzy import process, fuzz
-import logging
 
 logging.basicConfig(level=logging.CRITICAL)
 
@@ -15,7 +14,8 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 MARKDOWN_PATH = os.path.join(FILE_DIR, "markdown")
 
 
-def search(context: str, query: str) -> Tuple[int,  Dict[str, Tuple[int, str, int]]] | None:
+def search(context: str,
+           query: str) -> Tuple[int, Dict[str, Tuple[int, str, int]]] | None:
     ''' 
     Поиск определенной фразы или подстроки в данном контексте.
 
@@ -69,8 +69,7 @@ def main():
         query = input('Введите фразу или подстроку для поиска: ')
         if not query:
             rich.print(
-                '[bold red][:error:] Введите фразу или подстроку для поиска[/]'
-            )
+                '[bold red]:error: Введите фразу или подстроку для поиска[/]')
             continue
         break
 
@@ -80,7 +79,10 @@ def main():
         rich.print('[bold yellow]:warning:  Ничего не найдено[/]')
 
     os.system('cls' if os.name == 'nt' else 'clear')
-    rich.print(f'Всего строк в файлах: {count}')
+    rich.print(
+        panel.Panel(
+            f'[bold green]Файлов с результатами: {len(results)} | Всего строк в базе знаний: {count} | Поисковая фраза: {query}[/]',
+            title='Результаты поиска'))
     for matched in results:
         file_matches = results[matched]  # type: ignore
         matches = table.Table(

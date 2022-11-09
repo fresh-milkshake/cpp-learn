@@ -13,7 +13,7 @@
   - [Указатели & ссылки](/markdown/Pointers%20%26%20references.md)
   - [Информатика](/markdown/Informatics.md) (в процессе)
 - 2 Этап
-  - [Структуры и Классы](/markdown/Structures%20%26%20Classes.md)
+  - [Структуры и Классы](/markdown/Structures%20%26%20Classes.md) (Доделать)
   - [Обработка ошибок](/markdown/Error%20handling.md)
   - Проектирование ПО
     - [Паттерны проектирования](/markdown/Design%20patterns.md)

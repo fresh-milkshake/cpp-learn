@@ -11,7 +11,7 @@
   - [Функции](/markdown/Functions.md)
   - [Типы данных](/markdown/Data%20types.md)
   - [Указатели & ссылки](/markdown/Pointers%20%26%20references.md)
-  - [Информатика](/markdown/Informatics.md) (в процессе)
+  - [Информатика](/markdown/Informatics.md)
 - 2 Этап
   - [Структуры и Классы](/markdown/Structures%20%26%20Classes.md) (Доделать)
   - [Обработка ошибок](/markdown/Error%20handling.md)

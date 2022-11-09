@@ -50,16 +50,14 @@ public:
 А это его UML-диаграмма:
 
 ```cpp
-@startuml
-
-class Calculator {
-    + double add(double a, double b)
-    + double sub(double a, double b)
-    + double mul(double a, double b)
-    + double div(double a, double b)
-}
-
-@enduml
+classDiagram
+    Calculator <|-- ScientificCalculator
+    class Calculator{
+        + double add(double a, double b)
+        + double sub(double a, double b)
+        + double mul(double a, double b)
+        + double div(double a, double b)
+    }
 ```
 
 ## Сноски

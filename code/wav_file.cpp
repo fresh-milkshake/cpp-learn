@@ -27,18 +27,18 @@ struct RIFF_header
 class WavFile
 {
 private:
-    const char *file_path;         // Path to file
-    RIFF_header header;            // RIFF header
-    std::vector<float> audio_data; // Audio data in float format (from -1 to 1)
-    int sample_rate = 0;           // Sample rate of audio data in Hz (samples per second)
-    int channels = 0;              // Number of channels in audio data (1 - mono, 2 - stereo)
-    int bits_per_sample = 0;       // Number of bits per sample (8 or 16)
+    const char *file_path;                      // Path to file
+    RIFF_header header;                         // RIFF header
+    std::vector<float[2]> audio_data;           // Audio data
+    int sample_rate = 0;                        // Sample rate of audio data in Hz (samples per second)
+    int channels = 0;                           // Number of channels in audio data (1 - mono, 2 - stereo)
+    int bits_per_sample = 0;                    // Number of bits per sample (8 or 16)
 
     // Function for writing wav headers to the
     // start of the current file
     void write_headers(std::ofstream &file)
     {
-        file.write(header.riff, 4);            // "RIFF" header
+        file.write(this->header.riff, 4);      // "RIFF" header
         file.write(header.file_size, 4);       // file size
         file.write(header.wave_fmt, 8);        // "WAVEfmt " to indentify file as wav
         file.write(header.fmt_size, 4);        // size of the fmt chunk
@@ -63,7 +63,7 @@ public:
     }
 
     // Sample new audio data
-    void sample(float sample)
+    void sample(float* sample)
     {
         audio_data.push_back(sample);
     }
@@ -89,19 +89,21 @@ public:
         }
     }
 
-    // Save audio data to wav file with 
+    // Save audio data to wav file with
     // path from constructor
     void save()
     {
         std::cout << "Saving file: " << file_path << std::endl;
-
         // open file in binary mode
         std::ofstream file(file_path, std::ios::binary);
         // write headers to file
-        header.data_size = (char *)audio_data.size();
-        write_headers(file);
+        this->header.data_size = (char *)(sizeof(float) * audio_data.size());
+        std::cout << "Data size: " << header.data_size << std::endl;
+        this->write_headers(file);
         // write audio data to file
-        file.write((char *)audio_data.data(), audio_data.size() * sizeof(float));
+        file.write((char *)this->audio_data.data(), sizeof(float) * this->audio_data.size());
+        // close file
+        file.close();
     }
 };
 

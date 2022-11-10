@@ -2,3 +2,5 @@
 .vs/
 test.py
 *.wav
+*.exe
+experiment.*

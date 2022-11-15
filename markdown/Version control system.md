@@ -30,12 +30,12 @@
 
 Существует множество систем контроля версий. Некоторые из них:
 
-- [Git](https://git-scm.com/)
-- [Mercurial](https://www.mercurial-scm.org/)
-- [Subversion](https://subversion.apache.org/)
-- [Bazaar](https://bazaar.canonical.com/en/)
-- [Darcs](http://darcs.net/)
-- [Fossil](https://www.fossil-scm.org/)
+- [Git](https://git-scm.com/) - самая популярная система контроля версий. Используется во многих проектах, в том числе и в этом.
+- [Mercurial](https://www.mercurial-scm.org/) - еще одна популярная система контроля версий. Используется в проекте [Mozilla](https://www.mozilla.org/).
+- [Subversion](https://subversion.apache.org/) - самая старая система контроля версий. Используется в проекте [Apache](https://www.apache.org/).
+- [Bazaar](https://bazaar.canonical.com/en/) - система контроля версий, разработанная [Canonical](https://www.canonical.com/).
+- [Darcs](http://darcs.net/) - open-source система контроля версий, разработанная John Wiegley.
+- [Fossil](https://www.fossil-scm.org/) - система контроля версий, разработанная [D. Richard Hipp](https://en.wikipedia.org/wiki/D._Richard_Hipp). Используется в проекте [SQLite](https://www.sqlite.org/).
 - и многое другое...
 
 Я буду рассматривать Git, так как он является одной из самых популярных систем контроля версий.
@@ -44,7 +44,7 @@
 
 Git - это распределенная система контроля версий. Это означает, что каждый разработчик имеет полную копию репозитория (repository) на своем компьютере. Это позволяет разработчикам работать оффлайн, а также иметь полный контроль над своими изменениями.
 
-(GitHub.com)[https://github.com] - это веб-сервис, который позволяет хранить репозитории Git в облаке. Он также предоставляет некоторые дополнительные функции, такие как:
+[GitHub.com](https://github.com) - это веб-сервис, который позволяет хранить репозитории Git в облаке. Он также предоставляет некоторые дополнительные функции, такие как:
 
 - Комментарии к коммитам и ошибкам
 - Code Review

@@ -31,7 +31,7 @@
   - [Этапы компиляции](/markdown/Compilation%20stages.md)
 - 4 Этап
   - [Шаблоны](/markdown/Templates.md)
-  - [Идиомы](/markdown/Idioms.md)
+  - [Идиомы](/markdown/Idioms.md) (На доработке)
   - [Стандарты](/markdown/Standards.md)
   - [Система контроля версий](/markdown/Version%20control%20system.md)
   - [Принципы разработки ПО](/markdown/Software%20development%20principles.md)

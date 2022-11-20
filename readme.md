@@ -32,9 +32,9 @@
 - 4 Этап
   - [Шаблоны](/markdown/Templates.md)
   - [Идиомы](/markdown/Idioms.md) (На доработке)
-  - [Стандарты](/markdown/Standards.md)
+  - [Стандарты](/markdown/Standards.md) (На доработке)
   - [Система контроля версий](/markdown/Version%20control%20system.md)
-  - [Принципы разработки ПО](/markdown/Software%20development%20principles.md)
+  - [Принципы разработки ПО](/markdown/Software%20development%20principles.md) (На доработке)
   - [Промышленные стандарты](/markdown/Industrial%20standards.md)
   - [CI/CD](/markdown/CI%2FCD.md)
 - 5 Этап
@@ -43,4 +43,5 @@
   - [Документированные примеры кода](/documented/)
     - [Объектно-ориентированное программирование](/documented/OOP.cpp)
     - [Работа с памятью](/documented/Memory%20management.cpp)
+    - [Больше алгоритмов из STL](/documented/STL%20algorithms.cpp)
   - [Современный C++](/markdown/Modern%20C%2B%2B.md)
